@@ -31,7 +31,7 @@ public class BubbleSort implements Sort<int[]> {
 					swapped = true;
 				}
 			}
-			if(!swapped) break;
+			if (!swapped) break;
 		}
 	}
 

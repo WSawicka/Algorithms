@@ -1,7 +1,7 @@
 package main;
 
 import main.sorting.Sort;
-import main.sorting.impl.BubbleSort;
+import main.sorting.impl.InsertionSort;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,12 +13,12 @@ public class Main {
 		int n = in.nextInt();
 		int[] table = new int[n];
 
-		Sort<int[]> bubbleSort = new BubbleSort(n);
+		Sort<int[]> insertionSort = new InsertionSort(n);
 		for (int i = 0; i < n; i++) {
 			table[i] = in.nextInt();
 		}
-		bubbleSort.setData(table);
-		int[] sorted = bubbleSort.getSortedData();
+		insertionSort.setData(table);
+		int[] sorted = insertionSort.getSortedData();
 		System.out.println(Arrays.toString(sorted));
 	}
 }
