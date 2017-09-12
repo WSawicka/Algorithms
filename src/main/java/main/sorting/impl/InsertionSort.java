@@ -40,7 +40,7 @@ public class InsertionSort implements Sort<int[]> {
 	private int getLastSmallerIndex(int valueIndex) {
 		for (int i = valueIndex - 1; i >= 0; i--) {
 			if (table[i] < table[valueIndex]) {
-				return i;
+				return i + 1;
 			}
 		}
 		return 0;
