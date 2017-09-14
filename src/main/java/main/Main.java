@@ -1,6 +1,7 @@
 package main;
 
 import main.sorting.Sort;
+import main.sorting.impl.MergeSort;
 import main.sorting.impl.SelectionSort;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class Main {
 		int n = in.nextInt();
 		int[] table = new int[n];
 
-		Sort<int[]> sort = new SelectionSort(n);
+		Sort<int[]> sort = new MergeSort(n);
 		for (int i = 0; i < n; i++) {
 			table[i] = in.nextInt();
 		}
