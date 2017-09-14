@@ -1,3 +1,8 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+>
+Algorithms.iml,3\1\312e60ce18ebd4217b2cf3027008df0651d31e3f
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
