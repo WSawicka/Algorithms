@@ -13,12 +13,11 @@ public class Main {
 		int n = in.nextInt();
 		int[] table = new int[n];
 
-		Sort<int[]> sort = new MergeSort(n);
 		for (int i = 0; i < n; i++) {
 			table[i] = in.nextInt();
 		}
-		sort.setData(table);
-		int[] sorted = sort.getSortedData();
+		Sort<int[]> sort = new MergeSort();
+		int[] sorted = sort.getSortedData(table);
 		System.out.println(Arrays.toString(sorted));
 	}
 }

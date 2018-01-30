@@ -11,17 +11,9 @@ import java.util.stream.IntStream;
 public class MergeSort implements Sort<int[]> {
 	private int[] table;
 
-	public MergeSort(int n) {
-		this.table = new int[n];
-	}
-
 	@Override
-	public void setData(int[] tab) {
-		this.table = Arrays.copyOf(tab, tab.length);
-	}
-
-	@Override
-	public int[] getSortedData() {
+	public int[] getSortedData(int[] tab) {
+		this.table = tab;
 		return sort(table);
 	}
 

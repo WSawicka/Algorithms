@@ -10,26 +10,16 @@ import java.util.stream.IntStream;
 
 public class InsertionSort implements Sort<int[]> {
 	private int[] table;
-	private int n;
-
-	public InsertionSort(int n) {
-		this.n = n;
-		this.table = new int[n];
-	}
 
 	@Override
-	public void setData(int[] tab) {
-		this.table = Arrays.copyOf(tab, tab.length);
-	}
-
-	@Override
-	public int[] getSortedData() {
+	public int[] getSortedData(int[] tab) {
+		this.table = tab;
 		sort();
 		return table;
 	}
 
 	private void sort() {
-		for (int i = 1; i < n; i++) {
+		for (int i = 1; i < table.length; i++) {
 			if (table[i] < table[i - 1]) {
 				int lastSmaller = getLastSmallerIndex(i);
 				swapAllBetween(lastSmaller, i);

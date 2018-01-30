@@ -6,26 +6,17 @@ import java.util.Arrays;
 
 public class BubbleSort implements Sort<int[]> {
 	private int[] table;
-	private int n;
 
-	public BubbleSort(int n) {
-		this.n = n;
-		this.table = new int[n];
-	}
-
-	public void setData(int[] tab) {
-		this.table = Arrays.copyOf(tab, tab.length);
-	}
-
-	public int[] getSortedData() {
+	public int[] getSortedData(int[] tab) {
+		this.table = tab;
 		sort();
 		return table;
 	}
 
 	private void sort() {
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < table.length; i++) {
 			boolean swapped = false;
-			for (int j = 0; j < n - 1; j++) {
+			for (int j = 0; j < table.length - 1; j++) {
 				if (table[j] > table[j + 1]) {
 					swap(j, j + 1);
 					swapped = true;
