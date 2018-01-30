@@ -10,10 +10,8 @@ import java.util.stream.IntStream;
 
 public class MergeSort implements Sort<int[]> {
 	private int[] table;
-	private int n;
 
 	public MergeSort(int n) {
-		this.n = n;
 		this.table = new int[n];
 	}
 
@@ -24,10 +22,10 @@ public class MergeSort implements Sort<int[]> {
 
 	@Override
 	public int[] getSortedData() {
-		return sort(table, 0, n);
+		return sort(table);
 	}
 
-	private int[] sort(int[] tab, int start, int end) {
+	private int[] sort(int[] tab) {
 		if (tab.length == 1) {
 			return tab;
 		} else if (tab.length == 2) {
@@ -38,30 +36,32 @@ public class MergeSort implements Sort<int[]> {
 			}
 			return tab;
 		} else {
-			int[] left = Arrays.copyOfRange(tab, start, tab.length / 2);
-			int[] right = Arrays.copyOfRange(tab, tab.length / 2, end);
+			int[] left = Arrays.copyOfRange(tab, 0, tab.length / 2);
+			int[] right = Arrays.copyOfRange(tab, tab.length / 2, tab.length);
 
-			List<Integer> leftList = IntStream.of(sort(left, start, tab.length / 2)).boxed().collect(Collectors.toList());
-			List<Integer> rightList = IntStream.of(sort(right, tab.length / 2, end)).boxed().collect(Collectors.toList());
+			List<Integer> leftList = IntStream.of(sort(left)).boxed().collect(Collectors.toList());
+			List<Integer> rightList = IntStream.of(sort(right)).boxed().collect(Collectors.toList());
 			return getMerged(leftList, rightList).stream().mapToInt(m -> m).toArray();
 		}
 	}
 
-	private List<Integer> getMerged(List<Integer> left, List<Integer> right){
+	private List<Integer> getMerged(List<Integer> left, List<Integer> right) {
 		List<Integer> merged = new ArrayList<>();
-		for(Integer value : left){
-			if(left.get(0) != null && right.get(0) != null){
-				if(left.get(0) < right.get(0)){
+		while (true) {
+			if (left.size() != 0 && right.size() != 0) {
+				if (left.get(0) < right.get(0)) {
 					merged.add(left.get(0));
 					left.remove(0);
 				} else {
 					merged.add(right.get(0));
 					right.remove(0);
 				}
-			} else if(left.get(0) != null){
+			} else if (left.size() == 0) {
 				merged.addAll(right);
+				break;
 			} else {
 				merged.addAll(left);
+				break;
 			}
 		}
 		return merged;

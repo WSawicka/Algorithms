@@ -2,7 +2,6 @@ package main;
 
 import main.sorting.Sort;
 import main.sorting.impl.MergeSort;
-import main.sorting.impl.SelectionSort;
 
 import java.util.Arrays;
 import java.util.Scanner;
