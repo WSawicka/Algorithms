@@ -1,7 +1,6 @@
 package main.sorting
 
 import main.sorting.impl.*
-import org.junit.BeforeClass
 import spock.lang.Specification
 
 class SortTest extends Specification {
@@ -16,7 +15,7 @@ class SortTest extends Specification {
         Random random = new Random()
         int[] tab = new int[size]
         for (int i = 0; i < tab.length; i++) {
-            tab[i] = random.nextInt()
+            tab[i] = random.nextInt(Integer.MAX_VALUE / 4 as int)
         }
         return tab
     }
@@ -28,6 +27,15 @@ class SortTest extends Specification {
         isSorted(new BubbleSort().getSortedData(t3))
         isSorted(new BubbleSort().getSortedData(t4))
         isSorted(new BubbleSort().getSortedData(rand))
+    }
+
+    def "counting sort - check if every table is well sorted"() {
+        expect:
+        isSorted(new CountingSort().getSortedData(t1))
+        isSorted(new CountingSort().getSortedData(t2))
+        isSorted(new CountingSort().getSortedData(t3))
+        isSorted(new CountingSort().getSortedData(t4))
+        isSorted(new CountingSort().getSortedData(rand))
     }
 
     def "heap sort - check if every table is well sorted"() {
